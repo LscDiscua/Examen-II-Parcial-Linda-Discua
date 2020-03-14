@@ -19,9 +19,9 @@ class Menu:
          self.opciones = {
                             "1": self.agregar_vehiculo,
                             "2": self.buscar_vehiculo,
-                            "3": self.mostrar_ticket,
+                            "3": self.salida_cliente,
                             "4": self.mostrar_reporte,
-                            "5": self.close
+                            "5": self.salir
          }
 
     def menu_desplegable(self):
@@ -30,7 +30,7 @@ class Menu:
 
                 1. Agreagar un Nuevo Vehiculo
                 2. Buscar  Vehiculo
-                3. Mostrar Ticket del vehiculo
+                3. Salida del vehiculo
                 4. Mostrar reporte
                 5. Salir
         """)
@@ -67,7 +67,7 @@ class Menu:
         
         return cargo
     
-    def mostrar_ticket(self, vehiculos = None):
+    def salida_cliente(self, vehiculos = None):
         """  Muestra los vehiculos ingresados """
         if not vehiculos:
             vehiculos = self.vehiculo.vehiculos
@@ -76,6 +76,11 @@ class Menu:
             print("Placa:{0}\n Marca : {1}\nModelo: {2}\n Tipo de Vehiculo {3}\n Fecha Ingreso:{4}\nHora de ingreso: {5}\n Estado {6} , cargo {7}"
                     .format(vehiculo.plca, vehiculo.marca, vehiculo.modelo, vehiculo.tipo_vehiculo, vehiculo.fecha_ingreso, vehiculo.hora_ingreso,
                     vehiculo.estado = False, crear_ticket(cargo)))
+
+    def mostrar_reporte(self):
+        """" Muestra el reporte de los vehiculos ingresado y la ganancia de los mismos"""
+        vehiculo = self.buscar_vehiculo.buscar_vehiculo(filter)
+        self.mostrar_reporte(vehiculo)
 
     def run(self):
         """ funcion para iniciar el programa"""
@@ -93,7 +98,13 @@ class Menu:
         """ Buscamos un vehiculo en especifico"""
         filter = input("ingrese el texto")
         vehiculo = self.vehiculo.buscar_vehiculo(filter)
-        self.mostrar_ticket(vehiculo)
+        self.salida_cliente(vehiculo)
+    
+    def salir(self):
+        """ Funcion para cerrar le sistema"""
+        print("Gracias Por Su Presencia")
+        sys.exit(0)
+
     
 if __name__ == "__main__":
     menu = Menu()
